@@ -1,0 +1,22 @@
+# GOAL: COMPUTE A * (2B + 3A)
+
+{
+  parameter (pair int int);
+  storage int;
+  code {
+    UNPAIR; # STORAGE ; PARAMETER
+    UNPAIR; # STORAGE ; B ; A
+    DIG 2; # B ; A ; STORAGE
+    DROP; # B ; A
+    DUP; # B ; A ; A
+    PUSH int 3; # B ; A ; A ; 3
+    MUL; # B ; A ; A * 3
+    DIG 2; # A ; A * 3 ; B
+    PUSH int 2; # A ; A * 3 ; B ; 2
+    MUL; # A ; A * 3 ; B * 2
+    ADD; # A ; A * 3 + B * 2
+    MUL; # A * (2B + 3A)
+    NIL operation;
+    PAIR;
+  }
+}
